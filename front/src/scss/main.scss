@@ -1,0 +1,284 @@
+.main {
+
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 3px solid black;
+  }
+
+  .Typewriter {
+    height: 40px;
+  }
+
+  .btn:not(:last-child) {
+    margin-left: 0.5rem;
+  }
+
+  .shape {
+    border-bottom: 1px solid white;
+  }
+
+}
+
+h1 {
+  font-family: Rubik Doodle Shadow;
+  font-size: 50px;
+}
+
+.aboutMe {
+  margin-top: 20px;
+  margin-bottom: 40px;
+
+  .table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .my_profile {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    overflow: hidden;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .aboutBox {
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-size: 25px;
+
+    strong {
+      font-weight: 700;
+    }
+  ;
+
+    .item {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon {
+        width: 50px;
+      }
+
+      .title {
+        width: 220px;
+
+        :nth-child(1) {
+
+          font-weight: 700;
+          font-size: 20px;
+        }
+
+        :nth-child(2) {
+          color: dimgrey;
+        }
+
+        p {
+          margin: 0;
+          font-weight: normal;
+
+        }
+
+        a {
+          font-size: 16px;
+
+          :hover {
+            color: skyblue;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.skills {
+  background-color: #f4f5f7;
+  padding-bottom: 50px;
+
+  .icon {
+    display: flex;
+    align-items: center;
+
+    i {
+      font-size: 25px;
+    }
+  }
+
+  .title {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    h3 {
+      margin-left: 5px;
+      padding-bottom: 10px;
+      font-weight: bold;
+      font-family: Rubik Scribble;
+
+    }
+
+    border-bottom: 1px solid gray;
+  }
+
+  .img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+
+    img {
+      max-width: 100%;
+      max-height: 200px;
+    }
+  }
+}
+
+.project {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  position: relative;
+
+  .img {
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+  .content {
+
+    table {
+      width: 100%;
+
+      td:first-child {
+        font-weight: bolder;
+        width: 30%;
+      }
+
+      td:nth-child(2) {
+        width: 70%;
+      }
+    }
+
+    p {
+      font-size: 35px;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      font-weight: 900;
+    }
+
+    :nth-child(2) {
+      margin-bottom: 20px;
+
+      span {
+        font-size: 15px;
+        color: gray;
+      }
+    }
+
+    :nth-child(3) {
+      margin-bottom: 20px;
+    }
+
+    :nth-child(4) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .icon {
+    display: flex;
+    font-size: 20px;
+
+    i {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .youtube {
+      color: red;
+    }
+
+    .github {
+      color: black
+    }
+  }
+
+  .subhead {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
+.modal {
+  .youtube-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .youtube-div {
+    position: relative;
+    width: 100%;
+    heigth: auto;
+    padding-top: 50%;
+    margin-bottom: 20px;
+  }
+}
+
+.history {
+
+  .icons {
+
+
+    :nth-child(1) {
+      color: #0865FDFF;
+      font-size: 50px;
+      cursor: pointer;
+    }
+    :nth-child(2) {
+      color: black;
+      font-size: 50px;
+      cursor: pointer;
+    }
+  }
+  .content{
+    .contentBox{
+      display: flex;
+      align-content: center;
+      div:nth-child(1){
+        span:nth-child(1){
+          font-size: 20px;
+        }
+        width: 200px;
+        justify-content: center;
+        align-content: center;
+        p{
+          margin:0;
+        }
+      }
+      div:nth-child(2){
+        width: calc(100% - 200px);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        align-content: center;
+      }
+    }
+  }
+}

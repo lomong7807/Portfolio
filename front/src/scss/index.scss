@@ -1,0 +1,18 @@
+*:not(input, textarea) {
+  caret-color: transparent;
+  font-family: "nanumsquare";
+
+  span {
+    font-weight: normal;
+  }
+}
+
+.navName {
+  span {
+    strong {
+      font-weight: bold;
+    }
+
+    font-size: 20px;
+  }
+}
