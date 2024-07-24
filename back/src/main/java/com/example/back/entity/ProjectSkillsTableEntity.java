@@ -17,7 +17,7 @@ public class ProjectSkillsTableEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int projectSkillNo;
     @ManyToOne
-    @JoinColumn(name = "projectNo")
+    @JoinColumn(name = "projectNo", referencedColumnName = "projectNo")
     private ProjectEntity project;
     private String title;
     private String content;

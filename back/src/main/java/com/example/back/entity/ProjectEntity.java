@@ -18,6 +18,7 @@ public class ProjectEntity {
     private int projectNo;
     private String title;
     private String date;
+    @Column(columnDefinition = "TEXT")
     private String content;
     private String imgLink;
     private String githubLink;

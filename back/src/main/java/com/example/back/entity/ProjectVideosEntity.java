@@ -17,7 +17,7 @@ public class ProjectVideosEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int projectVideosNo;
     @ManyToOne
-    @JoinColumn(name = "projectNo")
+    @JoinColumn(name = "projectNo", referencedColumnName = "projectNo")
     private ProjectEntity project;
     private String title;
     private String link;
