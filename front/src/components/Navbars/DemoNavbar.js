@@ -16,7 +16,7 @@
 
 */
 import React, {useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-scroll';
 // JavaScript plugin that hides or shows a component based on your scroll
 import Headroom from "headroom.js";
 // reactstrap components
@@ -199,13 +199,13 @@ class DemoNavbar extends React.Component {
                       <span className="nav-link-inner--text d-lg-none ml-2">Instagram</span>
                     </NavLink>
                     <UncontrolledTooltip delay={0} target="tooltip333589074">
-                      follow me on Instagram
+                      Follow me on Instagram
                     </UncontrolledTooltip>
                   </NavItem>
                   <NavItem>
                     <NavLink
                         className="nav-link-icon"
-                        href="https://github.com/lomong7807"
+                        href="https://github.com/lomong7807?tab=repositories"
                         id="tooltip112445449"
                         target="_blank">
                       <i className="fa fa-github" />
