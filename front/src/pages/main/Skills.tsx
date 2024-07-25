@@ -20,10 +20,11 @@ function Skills() {
                     <h3 className="text-primary text-uppercase">BackEnd</h3>
                   </div>
                   <div className={'img'}>
-                    <img src={process.env.PUBLIC_URL + '/img/main/springBoot.png'} alt={'springBoot'} />
-                    <img src={process.env.PUBLIC_URL + '/img/main/java.png'} alt={'java'} />
-                    <img src={process.env.PUBLIC_URL + '/img/main/QueryDSL.png'} alt={'QueryDSL'} />
-                    <img src={process.env.PUBLIC_URL + '/img/main/redis.jpg'} alt={'Redis'} />
+                    <img src={process.env.PUBLIC_URL + '/img/main/springBoot.png'} alt={'springBoot'}/>
+                    <img src={process.env.PUBLIC_URL + '/img/main/java.png'} alt={'java'}/>
+                    <img src={process.env.PUBLIC_URL + '/img/main/QueryDSL.png'} alt={'QueryDSL'}/>
+                    <img src={process.env.PUBLIC_URL + '/img/main/redis.jpg'} alt={'Redis'}/>
+                    <img src={process.env.PUBLIC_URL + '/img/main/mybatis.png'} alt={'Mybatis'}/>
                   </div>
                 </CardBody>
               </Card>
