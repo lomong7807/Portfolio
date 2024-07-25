@@ -51,8 +51,8 @@ function Hero() {
                       <TypewriterComponent
                           options={{
                             strings: [
-                              '도전을 즐기는 주니어 개발자입니다.',
-                              '항상 제자리에 머물러 있지 않으려 합니다.',
+                              '배움을 즐기는 주니어 개발자입니다.',
+                              '항상 발전하려 노력합니다.',
                               '문제 발생시 해결하고자 하는 성격이 저의 장점입니다.',
                             ],
                             autoStart: true,
