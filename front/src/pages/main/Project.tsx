@@ -4,7 +4,9 @@ import {apiClient} from "../../App";
 
 function Project() {
   const [modal, setModal] = useState('');
-  const [projectList, setProjectList] = useState<
+  const [videoModal, setVideoModal] = useState('');
+  const [troubleshootingModal, setTroubleshootingModal] = useState('');
+    const [projectList, setProjectList] = useState<
     {
       imgLink: string;
       title: string;
@@ -13,6 +15,7 @@ function Project() {
       skillsTable: { title: string; content: string }[];
       githubLink: string;
       videos?: { title: string; link: string }[];
+      troubleshooting?: { title: string; content: string }[];
     }[]
   >();
   useEffect(() => {
@@ -20,20 +23,25 @@ function Project() {
       const projects = res.data;
 
       // Promise.all을 사용하여 모든 비동기 호출이 완료될 때까지 기다림
-      const fetchSkillsAndVideosPromises = projects.map((project) => {
+      const fetchSkillsAndVideosAndTroubleshootingPromises = projects.map((project) => {
         const projectNo = project.projectNo;
 
         // skillsTable과 videos를 가져오는 비동기 호출들을 Promise 배열에 추가
         const fetchSkillsTablePromise = apiClient.get(`/project/skillsTable?projectNo=${projectNo}`);
         const fetchVideosPromise = apiClient.get(`/project/videos?projectNo=${projectNo}`);
+        const fetchTroubleshootingPromise = apiClient.get(`/project/troubleshooting?projectNo=${projectNo}`);
 
-        return Promise.all([fetchSkillsTablePromise, fetchVideosPromise]).then(([resSkillsTable, resVideos]) => {
+
+          return Promise.all([fetchSkillsTablePromise, fetchVideosPromise, fetchTroubleshootingPromise]).then(([resSkillsTable, resVideos, resTroubleshooting]) => {
           const skillsTable = resSkillsTable.data;
           const videos = resVideos.data;
+          const troubleshooting = resTroubleshooting.data;
+
 
           // 프로젝트의 skillsTable 및 videos 업데이트
           project.skillsTable = skillsTable;
           project.videos = videos;
+          project.troubleshooting = troubleshooting;
 
           return project; // 업데이트된 프로젝트 반환
         }).catch((err) => {
@@ -43,7 +51,7 @@ function Project() {
       });
 
       // 모든 프로미스가 완료되면 프로젝트 리스트 업데이트
-      Promise.all(fetchSkillsAndVideosPromises).then((updatedProjects) => {
+      Promise.all(fetchSkillsAndVideosAndTroubleshootingPromises).then((updatedProjects) => {
         setProjectList(updatedProjects);
       });
     }).catch((err) => {
@@ -81,25 +89,36 @@ function Project() {
                           ))}
                         </tbody>
                       </table>
-                      <div className={'icon'}>
-                        {project.videos?.length!==0 && (
-                          <>
-                            <i className="bi bi-youtube youtube" onClick={() => setModal(project.title)}></i>
-                            <ProjectModal
-                              title={project.title}
-                              modal={modal}
-                              videos={project.videos}
-                              setModal={setModal}></ProjectModal>
-                          </>
-                        )}
-                        <i
-                          className="bi bi-github github"
-                          onClick={() => {
-                            window.open(project.githubLink);
-                          }}>
-                          {' '}
-                        </i>
-                      </div>
+                        <div className={'icon'}>
+                            {project.videos?.length !== 0 && (
+                                <>
+                                    <i className="bi bi-youtube youtube" onClick={() => setVideoModal(project.title)}></i>
+                                    <YoutubeModal
+                                        title={project.title}
+                                        modal={videoModal}
+                                        videos={project.videos}
+                                        setModal={setVideoModal}></YoutubeModal>
+                                </>
+                            )}
+                            <i
+                                className="bi bi-github github"
+                                onClick={() => {
+                                    window.open(project.githubLink);
+                                }}>
+                                {' '}
+                            </i>
+                            {project.troubleshooting?.length !== 0 && (
+                                <>
+                                    <i className="bi bi-lightbulb troubleshooting" onClick={() => setTroubleshootingModal(project.title)}></i>
+                                    <TroubleshootingModal
+                                        title={project.title}
+                                        modal={troubleshootingModal}
+                                        troubleshooting={project.troubleshooting}
+                                        setModal={setTroubleshootingModal}
+                                    />
+                                </>
+                            )}
+                        </div>
                     </Col>
                   </Row>
                 </CardBody>
@@ -108,13 +127,13 @@ function Project() {
           </Col>
         </Row>
       </Container>
-      {/* SVG separator */}
+        {/* SVG separator */}
     </section>
   );
 }
 
-function ProjectModal({ title, modal, setModal, videos }) {
-  return (
+function YoutubeModal({title, modal, setModal, videos}) {
+    return (
     <Modal className="modal-xl modal-dialog-centered" isOpen={modal === title} toggle={() => setModal('')}>
       <div className="modal-header">
         <h4 className="modal-title" id="modal-title-default">
@@ -141,6 +160,31 @@ function ProjectModal({ title, modal, setModal, videos }) {
       </div>
     </Modal>
   );
+}
+
+function TroubleshootingModal({ title, modal, setModal, troubleshooting }) {
+    return (
+        <Modal className="modal-l modal-dialog-centered" isOpen={modal === title} toggle={() => setModal('')}>
+            <div className="modal-header">
+                <h4 className="modal-title" id="modal-title-default">
+                    {title} - 트러블슈팅 및 배운 점
+                </h4>
+                <button aria-label="Close" className="close" data-dismiss="modal" type="button" onClick={() => setModal('')}>
+                    <span aria-hidden={true}>×</span>
+                </button>
+            </div>
+            <div className="modal-body">
+                {troubleshooting.map((item, index) => (
+                    <div key={index} className={'troubleshooting-div'}>
+                        <h5>
+                            <strong>{index + 1}. {item.title}</strong>
+                        </h5>
+                        <div dangerouslySetInnerHTML={{__html: item.content}}/>
+                    </div>
+                    ))}
+            </div>
+        </Modal>
+    );
 }
 
 export default Project;
