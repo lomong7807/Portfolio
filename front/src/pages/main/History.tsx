@@ -46,7 +46,7 @@ function History() {
                     <i
                       className="fa fa-github mr-4"
                       onClick={() => {
-                        window.open('https://github.com/tkddu1591', '_blank');
+                        window.open('https://github.com/lomong7807', '_blank');
                       }}
                     />
 
