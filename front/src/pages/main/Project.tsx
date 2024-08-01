@@ -109,7 +109,7 @@ function Project() {
                             </i>
                             {project.troubleshooting?.length !== 0 && (
                                 <>
-                                    <i className="bi bi-lightbulb troubleshooting" onClick={() => setTroubleshootingModal(project.title)}></i>
+                                    <i className="bi bi-info-circle-fill troubleshooting" onClick={() => setTroubleshootingModal(project.title)}></i>
                                     <TroubleshootingModal
                                         title={project.title}
                                         modal={troubleshootingModal}
